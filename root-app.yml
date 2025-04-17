@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: gitops  # Make sure this matches your Argo CD namespace
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/m0build-io/root-app.git
+    targetRevision: master
+    path: apps  # Folder inside your repo where child apps live
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
