@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/m0build-io/gitlab.git
+    repoURL: http://gitlab.gitlab.svc.cluster.local/infrastructure/gitlab.git
     targetRevision: "master"  # Git branch (or tag) for the repo
     path: k8s
 

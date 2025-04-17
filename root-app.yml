@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/m0build-io/root-app.git
+    repoURL: http://gitlab.gitlab.svc.cluster.local/infrastructure/argo-cd-root-app.git
     targetRevision: master
     path: apps  # Folder inside your repo where child apps live
 
