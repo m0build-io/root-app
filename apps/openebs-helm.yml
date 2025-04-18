@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openebs
+  namespace: gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/openebs/openebs.git
+    targetRevision: "v4.2.0"
+    path: charts
+    helm:
+      releaseName: openebs
+      parameters:
+        - name: "localpv-provisioner.hostpathClass.reclaimPolicy"
+          value: "Retain"
+        - name: "mayastor.storageClass.reclaimPolicy"
+          value: "Retain"
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openebs
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
