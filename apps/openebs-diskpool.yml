@@ -1,0 +1,34 @@
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-argon
+  namespace: openebs
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  node: argon
+  disks: ["/dev/loop33"]
+
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-krypton
+  namespace: openebs
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  node: krypton
+  disks: ["/dev/loop33"]
+
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-neon
+  namespace: openebs
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  node: neon
+  disks: ["/dev/loop33"]
